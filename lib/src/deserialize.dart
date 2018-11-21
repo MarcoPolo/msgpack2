@@ -166,16 +166,16 @@ class Uint8Decoder {
         break;
       case IntType.Int8:
         value = list[_offset++];
-        value -= 0x100;
+        value = value.toSigned(8);
         break;
       case IntType.Int16:
         value = _readBits(list, 16, _offset);
-        value -= 0x10000;
+        value = value.toSigned(16);
         _offset += 2;
         break;
       case IntType.Int32:
         value = _readBits(list, 32, _offset);
-        value -= 0x100000000;
+        value = value.toSigned(32);
         _offset += 4;
         break;
       case IntType.Int64:
